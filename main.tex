@@ -12,20 +12,34 @@
 \usepackage{xspace}
 \newcommand{\themename}{\textbf{\textsc{metropolis}}\xspace}
 
+\usepackage{hyperref}
+\setbeamercolor{frametitle}{bg=yellow, fg=black}
+
+
 \title{UCSC GENCODE 2018}
 % \date{\today}
-\date{}
-\author{mark, joel, benedict}
-\institute{UC Santa Cruz Genomics Institute}
-% \titlegraphic{\hfill\includegraphics[height=1.5cm]{logo.pdf}}
+\date{June 21-22, 2018}
+\author{
+  Mark Diekhans \href{mailto:markd@ucsc.edu}{\textless markd@ucsc.edu\textgreater} \\
+  Joel Armstrong \href{mailto:jcarmstr@ucsc.edu}{\textless jcarmstr@ucsc.edu\textgreater} \\
+  Benedict Paten \href{mailto:bpaten@ucsc.edu}{\textless bpaten@ucsc.edu\textgreater}}
+\titlegraphic{\hfill\includegraphics[height=1.5cm]{images/Genomics_Institute_Logo_Pathed_Text.pdf}}
 
 \begin{document}
 
 \maketitle
 
-\begin{frame}{Table of contents}
+\begin{frame}{Outline}
   \setbeamertemplate{section in toc}[sections numbered]
   \tableofcontents[hideallsubsections]
+  \begin{itemize}
+  \item Comparative genomics alignment
+  \item Comparative genomics annotation
+  \item Orthogonal transcript support
+  \item UCSC Browser and GENCODE
+  \end{itemize}
 \end{frame}
+
+
 
 \end{document}
