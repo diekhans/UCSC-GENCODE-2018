@@ -8,7 +8,7 @@
 
 \usepackage{pgfplots}
 \usepgfplotslibrary{dateplot}
-
+\usepackage[export]{adjustbox}
 \usepackage{xspace}
 \newcommand{\themename}{\textbf{\textsc{metropolis}}\xspace}
 
@@ -40,6 +40,35 @@
   \end{itemize}
 \end{frame}
 
+\begin{frame}{Cactus}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \begin{itemize}
+          \item Cactus is a non-reference-biased, whole-genome multiple-alignment tool
+          \item Most genome multiple alignments are reference-biased: for any two non-reference genomes, any homologies between sequence not present in the reference are not aligned
+          \item Reference-free alignments are harder to generate, but valuable for many comparative genomics applications
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \includegraphics[width=\columnwidth]{images/progressive-alignment-and-reconstruction.pdf} \\
+      \includegraphics[width=\columnwidth]{images/reference-free-diagram.pdf}
+    \end{column}
+  \end{columns}
+\end{frame}
 
+\begin{frame}{200 Mammals}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \begin{itemize}
+          \item Extending earlier 29 Mammals project: from 29 mammals with 4.5 subs/site to 252 mammals with \char`~15 subs/site
+          \item Generating 1bp-resolution constrained elements annotations
+          \item Generating gene sets for all 252 assemblies using CAT
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \adjincludegraphics[trim={{0.2\width} 0 {0.2\width} 0},clip,width=\columnwidth]{images/200_Mammal_Tree.pdf}
+    \end{column}
+  \end{columns}
+\end{frame}
 
 \end{document}
