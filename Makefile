@@ -25,7 +25,7 @@ output/%.pdf: drawings/%.svg
 	mv -f $@.tmp $@
 
 output/%.fontchk: output/%.pdf
-	pdfFontChk $<
+	bin/pdfFontChk $<
 	touch $@
 
 output/%.pdf: drawings/%.svg

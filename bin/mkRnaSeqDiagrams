@@ -1,0 +1,152 @@
+#!/usr/bin/env python3
+
+import os
+import graphviz as gv  # pip install graphviz
+import subprocess
+
+FASTQ = "fastq"
+CRAM = "CRAM"
+CRAM2 = "CRAM2"
+SJ_CALLS = "SJ calls"
+ENA = "ENA"
+ARRAY_EXPRESS  = "ArrayExpress"
+HISAT2 = "hisat2"
+SAM_TOOLS = "samtools"
+SJ_CALLER = "intron\\nprospector"
+AE_API = "Web\\nAPI"
+
+def cluster(graph, name, invisible=True, label=None):
+    graph_attr = {}
+    if invisible:
+        graph_attr["style"] = "invis"
+    if label is not None:
+        graph_attr["label"] = label
+    return graph.subgraph(name="cluster_" + name,
+                          graph_attr=graph_attr)
+
+def group(graph, name):
+    return graph.subgraph(name=name)
+
+def mkArrow(graph, src, dest):
+    graph.edge(src, dest, dir="forward")
+
+def mkFile(graph, name, label=None):
+    if label is None:
+        label = name
+    graph.node(name, label=label,
+               shape="note",
+               style="filled",
+               fillcolor="lavender")
+
+def mkEna(graph, name):
+    graph.node(name, label=name,
+               shape="folder",
+               style="filled",
+               fillcolor="greenyellow")
+
+def mkHisat2(graph, name):
+    graph.node(name, label=name,
+               shape="ellipse",
+               style="filled",
+               fillcolor="lightblue")
+
+def mkSamTools(graph, name):
+    graph.node(name, label=name,
+               shape="ellipse",
+               style="filled",
+               fillcolor="lightblue")
+
+def mkSjCaller(graph, name):
+    graph.node(name, label=name,
+               shape="ellipse",
+               style="filled",
+               fillcolor="gold")
+
+def mkRnaSeqerApi(graph, name):
+    graph.node(name, label=name,
+               shape="trapezium",
+               orientation="90",
+               style="filled",
+               fillcolor="greenyellow")
+
+def aeInternalCalling(graph):
+    mkFile(graph, FASTQ)
+    mkArrow(graph, FASTQ, ENA)
+    mkEna(graph, ENA)
+    mkArrow(graph, ENA, HISAT2)
+    with cluster(graph, ARRAY_EXPRESS, label=ARRAY_EXPRESS, invisible=False) as aeGraph:
+        mkHisat2(aeGraph, HISAT2)
+        mkArrow(aeGraph, HISAT2, SJ_CALLER)
+        mkSjCaller(aeGraph, SJ_CALLER)
+        mkArrow(aeGraph, SJ_CALLER, CRAM)
+        mkArrow(aeGraph, SJ_CALLER, SJ_CALLS)
+        mkFile(aeGraph, CRAM)
+        mkFile(aeGraph, SJ_CALLS)
+        mkArrow(aeGraph, CRAM, AE_API)
+        mkArrow(aeGraph, SJ_CALLS, AE_API)
+        mkRnaSeqerApi(aeGraph, AE_API)
+
+def aeExternalCalling(graph):
+    mkFile(graph, FASTQ)
+    mkArrow(graph, FASTQ, ENA)
+    mkEna(graph, ENA)
+    mkArrow(graph, ENA, HISAT2)
+    with cluster(graph, ARRAY_EXPRESS, label=ARRAY_EXPRESS, invisible=False) as aeGraph:
+        mkHisat2(aeGraph, HISAT2)
+        mkArrow(aeGraph, HISAT2, SAM_TOOLS)
+        mkSamTools(aeGraph, SAM_TOOLS)
+        mkArrow(aeGraph, SAM_TOOLS, CRAM)
+        mkFile(aeGraph, CRAM)
+        mkArrow(aeGraph, CRAM, AE_API)
+        mkRnaSeqerApi(aeGraph, AE_API)
+    mkArrow(graph, AE_API, SJ_CALLER)
+    mkSjCaller(graph, SJ_CALLER)
+    mkArrow(graph, SJ_CALLER, SJ_CALLS)
+    mkFile(graph, SJ_CALLS)
+
+def initGraph(title, fmt, size=None):
+    fontname = "helvetica"
+    #fontname = "'Bitstream Vera Sans'"
+    graph_attr = {"fontname": fontname,
+                  "fontsize": "18",
+                  "rankdir": "LR"}
+    if size is not None:
+        graph_attr["size"] = size
+        graph_attr["ratio"] = "expand"
+    node_attr = {"fontname": fontname}
+    edge_attr = {"fontname": fontname}
+
+    graph = gv.Digraph(title, format=fmt, graph_attr=graph_attr,
+                       node_attr=node_attr, edge_attr=edge_attr)
+
+    return graph
+
+def renderGraph(graph, fname, fmt):
+    # graph.save(fname + ".dot")
+    graph.render(fname, cleanup=True)
+    if fmt == "ps2":
+        subprocess.run(["epstopdf", fname + ".ps2", "-o", fname + ".pdf"], check=True)
+
+def buildInternalCalling(fmt, size=None):
+    fname = "calling_at_array_express"
+    graph = initGraph("Junction calling at ArrayExpress", fmt, size)
+    aeInternalCalling(graph)
+    renderGraph(graph, fname, fmt)
+
+def buildExternalCalling(fmt, size=None):
+    fname = "calling_external"
+    graph = initGraph("Junction calling outside of ArrayExpress", fmt, size)
+    aeExternalCalling(graph)
+    renderGraph(graph, fname, fmt)
+
+def main():
+    # need to use brew rather than ports inkscape to get scalable fonts direct to pdf
+    # fonts look rather ugly with ps2 -> epstopdf on either install
+    # this looks like it's because ports is using cario
+    #fmt = "ps2"
+    fmt = "pdf"
+    size = "10x3!"
+    buildInternalCalling(fmt, size)
+    buildExternalCalling(fmt, size)
+
+main()
