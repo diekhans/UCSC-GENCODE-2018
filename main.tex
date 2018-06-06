@@ -6,7 +6,7 @@
                          urlcolor=blue},
                xcolor={svgnames,table}]{beamer}
 
-\usetheme{metropolis}
+\usetheme[sectionpage=simple]{metropolis}
 \usepackage{appendixnumberbeamer}
 
 \usepackage{booktabs}
@@ -19,12 +19,20 @@
 \usepackage[T1]{fontenc}
 \usepackage[svgnames]{xcolor}
 \usepackage{xspace}
+\usepackage{changepage}
 
 \newcommand{\themename}{\textbf{\textsc{metropolis}}\xspace}
 \setbeamercolor{background canvas}{bg=white}
 \setbeamercolor{frametitle}{bg=yellow, fg=black}
 \setbeamertemplate{footline}[page number]
+\setbeamerfont{section title}{size=\Huge, series=\bfseries}
 
+
+\newcommand{\sectionframe}[1]{
+  \begin{frame}{GENCODE at UCSC 2018}
+    \section{#1}
+  \end{frame}
+}
 
 % tight itemized list
 \newenvironment{tightitemize}{%
@@ -36,7 +44,7 @@
 
 
 
-\title{UCSC GENCODE 2018}
+\title{GENCODE at UCSC 2018}
 \date{June 21-22, 2018}
 \author{
   Mark Diekhans \href{mailto:markd@ucsc.edu}{\textless markd@ucsc.edu\textgreater} \\
@@ -49,39 +57,37 @@
 
 \maketitle
 
-\begin{frame}{UCSC's world view of genomics}
-  \centering
-  \only<1>{\includegraphics[scale=0.50]{images/three-As.pdf}}
-  \only<2>{\includegraphics[scale=0.50]{images/our-two-As.pdf}}
-\end{frame}
-
-
-\begin{frame}{200 Mammals}
-  \begin{columns}
-    \begin{column}{0.5\textwidth}
-      \begin{itemize}
-          \item Extending earlier 29 Mammals project: from 29 mammals with 4.5 subs/site to 252 mammals with \char`~15 subs/site
-          \item Generating 1bp-resolution constrained elements annotations
-          \item Generating gene sets for all 252 assemblies using CAT
-      \end{itemize}
-    \end{column}
-    \begin{column}{0.5\textwidth}
-      \adjincludegraphics[trim={{0.2\width} 0 {0.2\width} 0},clip,width=\columnwidth]{images/200_Mammal_Tree.pdf}
-    \end{column}
-  \end{columns}
-\end{frame}
-
 \begin{frame}{Outline}
   \setbeamertemplate{section in toc}[sections numbered]
   \tableofcontents[hideallsubsections]
+\end{frame}
+
+\sectionframe{Introduction}
+
+\begin{frame}{The three As of comparative genomics}
+  \centering
+  \begin{adjustwidth}{-0.8em}{-0.8em}
+  \only<1>{\includegraphics[scale=0.45]{images/three-As.pdf}}
+  \only<2>{\includegraphics[scale=0.45]{images/our-two-As.pdf}}
+  \end{adjustwidth}
+\end{frame}
+
+\begin{frame}{Comparative genomics as an annotation tool}
+  \centering
   \begin{itemize}
-  \item Comparative genomics alignment
-  \item Comparative genomics annotation
-  \item Graph Genomes
-  \item Transcript support
-  \item UCSC Browser and GENCODE
+  \item Long-read sequence assembly of the gorilla genome \\
+    Gordon et al., Science Apr 2016, DOI: 10.1126/science.aae0344 \\
+    \includegraphics[scale=0.1]{images/science-gorilla.jpg}
+  \item Repeat associated mechanisms of genome evolution and function revealed by the Mus caroli and Mus pahari genomes \\
+    Tybert, et al., Genome Res. Apr 2018, DOI: 10.1101/gr.234096.117
+  \item Mouse strain genomes project, 16 laboratory and wild-derived strains \\
+    Lilue, et al., accepted
+  \item High-resolution comparative analysis of great ape genomes \\
+    Kronenberg, et al., accepted
   \end{itemize}
 \end{frame}
+
+\sectionframe{Comparative genomics alignment}
 
 \begin{frame}{Cactus}
   \begin{columns}
@@ -99,8 +105,29 @@
   \end{columns}
 \end{frame}
 
+\begin{frame}{200 Mammals}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \begin{itemize}
+          \item Extending earlier 29 Mammals project: from 29 mammals with 4.5 subs/site to 252 mammals with \char`~15 subs/site
+          \item Generating 1bp-resolution constrained elements annotations
+          \item Generating gene sets for all 252 assemblies using CAT
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \adjincludegraphics[trim={{0.2\width} 0 {0.2\width} 0},clip,width=\columnwidth]{images/200_Mammal_Tree.pdf}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\sectionframe{Comparative genomics annotation}
+
+\sectionframe{Graph Genomes}
+
+\sectionframe{Transcript support}
 \begin{frame}{RNA-Seq Intron Support}
   Goals:
+  
   \begin{itemize}
   \item Evaluate support for 
   \end{itemize}
@@ -143,6 +170,8 @@
   Splice junction calling in ArrayExpress RNA-Seq pipeline.
   \includegraphics[scale=0.42]{images/calling_at_array_express.pdf}
 \end{frame}
+
+\sectionframe{UCSC Browser}
 
 \iffalse
 \begin{frame}{xxx}
