@@ -1,18 +1,24 @@
 ROOT = .
 .SECONDARY:
 
-docs += main
+doc = main
+docFinal = output/gencode-ucsc-2018.pdf
 
-docsPdf = ${docs:%=output/%.pdf}
-docsFontchk = ${docs:%=output/%.fontchk}
+docPdf = ${doc:%=output/%.pdf}
+docFontchk = ${doc:%=output/%.fontchk}
 drawings = 
 images = $(wildcard images/*.pdf) $(wildcard images/*.jpg) $(wildcard images/*.png)
 depends = ${drawings} ${images}
 
-all: ${docsPdf} ${docsFontchk} ${depends}
+all: ${docFinal} ${docPdf} ${docFontchk} ${depends}
 
 ltxopts = -file-line-error-style -output-directory=output
 ltxmode =\\nonstopmode\\input
+
+# create a more desiable name and keep preview from seeing partial PDF
+${docFinal}: output/${doc}.pdf ${docFontchk}
+	cp -f $< $@.tmp
+	mv -f $@.tmp $@
 
 output/%.pdf: %.tex ${depends}
 	@mkdir -p $(dir $@)

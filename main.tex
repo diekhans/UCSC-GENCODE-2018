@@ -34,6 +34,12 @@
   \end{frame}
 }
 
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
 % tight itemized list
 \newenvironment{tightitemize}{%
 \begin{itemize}
@@ -44,6 +50,7 @@
 
 
 
+% -----------------------------------------------------------------------------
 \title{GENCODE at UCSC 2018}
 \date{June 21-22, 2018}
 \author{
@@ -51,7 +58,8 @@
   Joel Armstrong \href{mailto:jcarmstr@ucsc.edu}{\textless jcarmstr@ucsc.edu\textgreater} \\
   Benedict Paten \href{mailto:bpaten@ucsc.edu}{\textless bpaten@ucsc.edu\textgreater} \\
   Ian Fiddes (emeritus) \\
-  Stefanie Nachtweide (emeritus)}
+  Stefanie Nachtweide (emeritus) \\
+  Adam Novak (graph genomes)}
 \titlegraphic{\hfill\includegraphics[height=1.5cm]{images/Genomics_Institute_Logo_Pathed_Text.pdf}}
 \begin{document}
 
@@ -62,18 +70,19 @@
   \tableofcontents[hideallsubsections]
 \end{frame}
 
+% -----------------------------------------------------------------------------
 \sectionframe{Introduction}
 
 \begin{frame}{The three As of comparative genomics}
-  \centering
-  \begin{adjustwidth}{-0.8em}{-0.8em}
-  \only<1>{\includegraphics[scale=0.45]{images/three-As.pdf}}
-  \only<2>{\includegraphics[scale=0.45]{images/our-two-As.pdf}}
-  \end{adjustwidth}
+  \begin{center}
+    \begin{adjustwidth}{-0.8em}{-0.8em}
+      \only<1>{\includegraphics[scale=0.45]{images/three-As.pdf}}
+      \only<2>{\includegraphics[scale=0.45]{images/our-two-As.pdf}}
+    \end{adjustwidth}
+  \end{center}
 \end{frame}
 
 \begin{frame}{Comparative genomics as an annotation tool}
-  \centering
   \begin{itemize}
   \item Long-read sequence assembly of the gorilla genome \\
     Gordon et al., Science Apr 2016, DOI: 10.1126/science.aae0344 \\
@@ -87,6 +96,7 @@
   \end{itemize}
 \end{frame}
 
+% -----------------------------------------------------------------------------
 \sectionframe{Comparative genomics alignment}
 
 \begin{frame}{Cactus}
@@ -120,10 +130,56 @@
   \end{columns}
 \end{frame}
 
+% -----------------------------------------------------------------------------
 \sectionframe{Comparative genomics annotation}
 
-\sectionframe{Graph Genomes}
+% -----------------------------------------------------------------------------
+\sectionframe{Graph genomes}
 
+\begin{frame}{Graph genomes goals}
+  \begin{itemize}
+  \item address reference-bias in genome-based analysis
+  \item consistent representation of human variation with at least 1\% penetrance
+  \item stable addressing as new variation is added
+  \item bring newer data to users stuck on older linear reference genome releases
+  \item support annotation of human variation (GENCODE pilot project)
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Graph genomes basics}
+  \begin{center}
+    \includegraphics[scale=0.30]{images/graph-genome-alt.pdf}
+  \end{center}
+  \begin{center}
+    \includegraphics[scale=0.30]{images/graph-genome-inversion.pdf}
+  \end{center}
+  \begin{itemize}
+  \item set of sequences (nodes)
+  \item joins (edges) connect sides of sequences.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Graph genome representation complex variation (MHC)}
+  \begin{center}
+    \only<1>{\includegraphics[scale=0.32]{images/graph-genome-mhc.png}}
+    \only<2>{\includegraphics[scale=0.40]{images/graph-genome-local-structure.png}}
+    \end{center}
+  \blfootnote{The major histocompatibility complex− Kiran Garimella \& Gil McVean}
+\end{frame}
+
+\begin{frame}{Haplotypes are paths through a graph genome}
+  \begin{center}
+    \includegraphics[scale=0.50]{images/graph-genome-haplotypes.pdf}
+  \end{center}
+\end{frame}
+
+\begin{frame}{Annotating graph genomes}
+  \begin{center}
+    \includegraphics[scale=0.65]{images/graph-annotation.pdf}
+  \end{center}
+\end{frame}
+
+% -----------------------------------------------------------------------------
 \sectionframe{Transcript support}
 \begin{frame}{RNA-Seq Intron Support}
   Goals:
@@ -134,7 +190,6 @@
 \end{frame}
 
 \begin{frame}{RNA-Seq Intron Support}
-  \centering
   \begin{itemize}
   \item CZI SRA alignments
   \item All SRA cloud run
@@ -156,37 +211,35 @@
 
 \begin{frame}{RNA-Seq Intron Support}
   Working with Array Express
-  \centering
   experiment and intron saturation
   
 \end{frame}
 
 \begin{frame}{RNA-Seq Intron Support}
   Approaches to Array Express integration
-  \centering
   Splice junction calling external to ArrayExpress
-  \includegraphics[scale=0.42]{images/calling_external.pdf}
+
+  \begin{center}
+    \includegraphics[scale=0.42]{images/calling_external.pdf}
+  \end{center}
 
   Splice junction calling in ArrayExpress RNA-Seq pipeline.
-  \includegraphics[scale=0.42]{images/calling_at_array_express.pdf}
+  \begin{center}
+    \includegraphics[scale=0.42]{images/calling_at_array_express.pdf}
+  \end{center}
 \end{frame}
 
+% -----------------------------------------------------------------------------
 \sectionframe{UCSC Browser}
 
 \iffalse
-\begin{frame}{xxx}
-  
-  \centering
-  \begin{itemize}
-  \item zzz
-  \end{itemize}
+\begin{frame}{}
+  \begin{center}
+    \includegraphics[scale=0.20]{}
+  \end{center}
 \end{frame}
 
 \begin{frame}{}
-  \centering
-\end{frame}
-\begin{frame}{}
-  \centering
   \begin{itemize}
   \item 
   \end{itemize}
@@ -194,6 +247,6 @@
 \fi
 
 \iffalse
-- primate/CAT paper
+% nanopore 
 \fi
 \end{document}
