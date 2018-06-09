@@ -11,7 +11,6 @@
 
 \usepackage{booktabs}
 \usepackage[scale=2]{ccicons}
-
 \usepackage{pgfplots}
 \usepgfplotslibrary{dateplot}
 \usepackage[export]{adjustbox}
@@ -29,7 +28,7 @@
 
 
 \newcommand{\sectionframe}[1]{
-  \begin{frame}{GENCODE at UCSC 2018}
+  \begin{frame}{\thetitle}
     \section{#1}
   \end{frame}
 }
@@ -51,7 +50,8 @@
 
 
 % -----------------------------------------------------------------------------
-\title{GENCODE at UCSC 2018}
+\newcommand{\thetitle}{GENCODE at UCSC 2018}
+\title{\thetitle}
 \date{June 21-22, 2018}
 \author{
   Mark Diekhans \href{mailto:markd@ucsc.edu}{\textless markd@ucsc.edu\textgreater} \\
@@ -59,7 +59,10 @@
   Benedict Paten \href{mailto:bpaten@ucsc.edu}{\textless bpaten@ucsc.edu\textgreater} \\
   Ian Fiddes (emeritus) \\
   Stefanie Nachtweide (emeritus) \\
-  Adam Novak (graph genomes)}
+  Adam Novak (graph genomes) \\
+  Mark Akeson (nanopore) \\
+  Miten Jain (nanopore)
+}
 \titlegraphic{\hfill\includegraphics[height=1.5cm]{images/Genomics_Institute_Logo_Pathed_Text.pdf}}
 \begin{document}
 
@@ -83,17 +86,25 @@
 \end{frame}
 
 \begin{frame}{Comparative genomics as an annotation tool}
-  \begin{itemize}
-  \item Long-read sequence assembly of the gorilla genome \\
-    Gordon et al., Science Apr 2016, DOI: 10.1126/science.aae0344 \\
-    \includegraphics[scale=0.1]{images/science-gorilla.jpg}
-  \item Repeat associated mechanisms of genome evolution and function revealed by the Mus caroli and Mus pahari genomes \\
-    Tybert, et al., Genome Res. Apr 2018, DOI: 10.1101/gr.234096.117
-  \item Mouse strain genomes project, 16 laboratory and wild-derived strains \\
-    Lilue, et al., accepted
-  \item High-resolution comparative analysis of great ape genomes \\
-    Kronenberg, et al., accepted
-  \end{itemize}
+  \begin{columns}
+    \begin{column}{0.8\textwidth}
+      \begin{itemize}
+      \item Long-read sequence assembly of the gorilla genome \\
+        Gordon et al., Science Apr 2016, DOI: 10.1126/science.aae0344
+      \item Repeat associated mechanisms of genome evolution and function revealed by the Mus caroli and Mus pahari genomes \\
+        Tybert, et al., Genome Res. Apr 2018, DOI: 10.1101/gr.234096.117
+      \item High-resolution comparative analysis of great ape genomes \\
+        Kronenberg, et al., Science June 2018, DOI: 10.1126/science.aar6343
+      \item Mouse strain genomes project, 16 laboratory and wild-derived strains \\
+        Lilue, et al., accepted
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.2\textwidth}
+      \includegraphics[scale=0.2]{images/science-gorilla.jpg}
+      \vspace{4em}
+      \includegraphics[scale=0.2]{images/science-ape.jpg}
+    \end{column}
+  \end{columns}
 \end{frame}
 
 % -----------------------------------------------------------------------------
@@ -133,6 +144,29 @@
 % -----------------------------------------------------------------------------
 \sectionframe{Comparative genomics annotation}
 
+\begin{frame}{Comparative Annotation Toolkit (CAT)}
+  \begin{itemize}
+  \item comparative annotation combining multiple sources of evidence
+    \begin{tightitemize}
+    \item start with high-quality gene annotations on related species (GENCODE or Ensembl)
+    \item create Cactus alignments
+    \item project annotations through alignments to target genome
+    \item combine mappings with RNA-Seq and Iso-Seq evidence using AUGUSTUS
+    \item create consensus gene set 
+    \end{tightitemize}
+  \item developed by Ian Fiddes
+  \item ongoing maintenance 
+  \item work with Ensemble gene build group to incorporate useful methodologies
+  \end{itemize}
+\blfootnote{Comparative Annotation Toolkit (CAT) - simultaneous clade and personal genome annotation, Fiddes, et al., accepted; pre-print DOI:10.1101/231118}
+\end{frame}
+
+\begin{frame}{CAT pipeline}
+  \begin{center}
+    \includegraphics[scale=0.38]{images/CAT_pipeline.pdf}
+  \end{center}
+\end{frame}
+
 % -----------------------------------------------------------------------------
 \sectionframe{Graph genomes}
 
@@ -148,9 +182,7 @@
 
 \begin{frame}{Graph genomes basics}
   \begin{center}
-    \includegraphics[scale=0.30]{images/graph-genome-alt.pdf}
-  \end{center}
-  \begin{center}
+    \includegraphics[scale=0.30]{images/graph-genome-alt.pdf} \\
     \includegraphics[scale=0.30]{images/graph-genome-inversion.pdf}
   \end{center}
   \begin{itemize}
@@ -181,23 +213,45 @@
 
 % -----------------------------------------------------------------------------
 \sectionframe{Transcript support}
-\begin{frame}{RNA-Seq Intron Support}
-  Goals:
-  
+\begin{frame}{Transcript support goals}
   \begin{itemize}
-  \item Evaluate support for 
+  \item evaluate support of GENCODE annotations from current data
+    \begin{tightitemize}
+    \item assist with annotations
+    \item guide users
+    \end{tightitemize}
+  \item full-length support (TSL)
+    \begin{tightitemize}
+    \item GenBank \& dbEST 
+    \item IsoSeq \& nanopore - the next step
+    \end{tightitemize}
+  \item intron support (RSL)
+    \begin{tightitemize}
+    \item SRA/ENA open and controlled access RNA-Seq
+    \end{tightitemize}
   \end{itemize}
 \end{frame}
 
-\begin{frame}{RNA-Seq Intron Support}
+\begin{frame}{RNA-Seq intron support approaches}
   \begin{itemize}
   \item CZI SRA alignments
-  \item All SRA cloud run
+    \begin{tightitemize}
+    \item 22k human \& 48k mouse experiments
+    \item random selection; many are small sets
+    \item approaching satiation, however many known introns missing
+    \end{tightitemize}
+  \item large SRA cloud run
+    \begin{tightitemize}
+    \item delayed by technology on free cloud resources
+    \end{tightitemize}
   \item Array Express collaboration
+    \begin{tightitemize}
+    \item a chance to create an ongoing resource
+    \end{tightitemize}
   \end{itemize}
 \end{frame}
 
-\begin{frame}{RNA-Seq Intron Support}
+\begin{frame}{CZI set experiment saturation for annotated introns}
   \begin{columns}
     \begin{column}{0.5\textwidth}
       \includegraphics[scale=0.37]{images/hs_saturation_annot.pdf}
@@ -206,32 +260,81 @@
       \includegraphics[scale=0.37]{images/mm_saturation_annot.pdf}
     \end{column}
   \end{columns}
-  Experiment saturation for annotated introns
 \end{frame}
 
-\begin{frame}{RNA-Seq Intron Support}
-  Working with Array Express
-  experiment and intron saturation
-  
+\begin{frame}{Array Express collaboration}
+  \begin{itemize}
+  \item Array Express pipeline maps with TopHat2 and estimates expression
+    \begin{tightitemize}
+    \item process incoming RNA-Seq experiments; including controlled access
+    \item doesn't save splice junction calls
+    \end{tightitemize}
+  \item redoing pipeline, most likely with HiSat2
+  \item UCSC developed at intron caller that is independent of aligner
+    \begin{tightitemize}
+    \item \url{https://github.com/diekhans/intronProspector}
+    \end{tightitemize}
+  \item provides data for all Ensembl assemblies, not just GENCODE
+  \item assist in recompute using Azure cloud
+  \end{itemize}
 \end{frame}
 
-\begin{frame}{RNA-Seq Intron Support}
-  Approaches to Array Express integration
-  Splice junction calling external to ArrayExpress
-
+\begin{frame}{Array Express integration}
   \begin{center}
+    Splice junction calling external to ArrayExpress
     \includegraphics[scale=0.42]{images/calling_external.pdf}
-  \end{center}
 
-  Splice junction calling in ArrayExpress RNA-Seq pipeline.
-  \begin{center}
+    Splice junction calling in ArrayExpress RNA-Seq pipeline.
     \includegraphics[scale=0.42]{images/calling_at_array_express.pdf}
   \end{center}
 \end{frame}
 
-% -----------------------------------------------------------------------------
-\sectionframe{UCSC Browser}
+\begin{frame}{Long-read transcript support}
+  \begin{itemize}
+  \item supplement and eventually replace GenBank w Iso-Seq \& Oxford Nanopore
+    \begin{tightitemize}
+    \item currently a limited number of SRA data sets
+    \end{tightitemize}
+  \item UCSC Nanopore project and Nanopore WGS Consortium
+    \begin{tightitemize}
+    \item \url{https://github.com/nanopore-wgs-consortium/NA12878/blob/master/RNA.md}
+    \item direct RNA sequencing
+    \item $3^\prime$ complete
+    \item also doing cDNA
+    \end{tightitemize}
+  \end{itemize}
+\end{frame}
 
+\begin{frame}{TP53 nanopore direct RNA}
+  \vspace{1em}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \includegraphics[bb=0pt 0pt 429pt 814pt,clip,clip,scale=0.35]{images/tp53-direct-rna-1.pdf}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \includegraphics[bb=0pt 0pt 429pt 814pt,clip,scale=0.35]{images/tp53-direct-rna-2.pdf}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% -----------------------------------------------------------------------------
+\iffalse
+\sectionframe{UCSC Browser}
+\begin{frame}{}
+  \begin{itemize}
+  \item 
+  \end{itemize}
+\end{frame}
+\fi
+
+% -----------------------------------------------------------------------------
+\begin{frame}{\thetitle}
+  \section{Discussion}
+  \begin{figure}[b]
+    \includegraphics[scale=0.20]{images/Bugs.jpg}
+  \end{figure}
+\end{frame}
+% -----------------------------------------------------------------------------
 \iffalse
 \begin{frame}{}
   \begin{center}
