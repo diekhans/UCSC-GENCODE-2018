@@ -22,10 +22,13 @@
 
 \newcommand{\themename}{\textbf{\textsc{metropolis}}\xspace}
 \setbeamercolor{background canvas}{bg=white}
-\setbeamercolor{frametitle}{bg=yellow, fg=black}
+\setbeamercolor{title}{fg=blue}
+\setbeamercolor{date}{fg=blue}
+\setbeamercolor{frametitle}{bg=yellow, fg=blue}
 \setbeamertemplate{footline}[page number]
 \setbeamerfont{section title}{size=\Huge, series=\bfseries}
-
+\setbeamertemplate{itemize item}[circle]
+\setbeamercolor{itemize item}{fg=blue}
 
 \newcommand{\sectionframe}[1]{
   \begin{frame}{\thetitle}
@@ -54,18 +57,17 @@
 
 % -----------------------------------------------------------------------------
 \newcommand{\thetitle}{GENCODE at UCSC 2018}
-\title{\thetitle}
+\title{\vspace{2cm}\thetitle}
 \date{June 21-22, 2018}
-\author{
-  Mark Diekhans \href{mailto:markd@ucsc.edu}{\textless markd@ucsc.edu\textgreater} \\
-  Joel Armstrong \href{mailto:jcarmstr@ucsc.edu}{\textless jcarmstr@ucsc.edu\textgreater} \\
-  Benedict Paten \href{mailto:bpaten@ucsc.edu}{\textless bpaten@ucsc.edu\textgreater} \\
-  Ian Fiddes (emeritus) \\
-  Stefanie Nachtweide (emeritus) \\
-  Adam Novak (graph genomes) \\
-  Mark Akeson (nanopore) \\
-  Miten Jain (nanopore)
+\author[markd]{
+    Mark Diekhans \href{mailto:markd@ucsc.edu}{\textless markd@ucsc.edu\textgreater} \\
+    Joel Armstrong \href{mailto:jcarmstr@ucsc.edu}{\textless jcarmstr@ucsc.edu\textgreater} \\
+    Benedict Paten \href{mailto:bpaten@ucsc.edu}{\textless bpaten@ucsc.edu\textgreater} \\
+    Adam Novak (graph genomes) \\
+    Mark Akeson, Miten Jain (nanopore) \\
+    Ian Fiddes, Stefanie Nachtweide (emeritus) \\
 }
+
 \titlegraphic{\hfill\includegraphics[height=1.5cm]{images/Genomics_Institute_Logo_Pathed_Text.pdf}}
 \begin{document}
 
