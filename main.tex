@@ -47,7 +47,10 @@
   \setlength{\parsep}{0pt}%
 }{\end{itemize}}
 
-
+% paperref{title}{authors}{journal}{doi}
+\newcommand\paperref[4]{%
+  {\it #1, }{ #2,}{ #3}
+}
 
 % -----------------------------------------------------------------------------
 \newcommand{\thetitle}{GENCODE at UCSC 2018}
@@ -87,19 +90,21 @@
 
 \begin{frame}{Comparative genomics as an annotation tool}
   \begin{columns}
-    \begin{column}{0.8\textwidth}
-      \begin{itemize}
-      \item Long-read sequence assembly of the gorilla genome \\
-        Gordon et al., Science Apr 2016, DOI: 10.1126/science.aae0344
-      \item Repeat associated mechanisms of genome evolution and function revealed by the Mus caroli and Mus pahari genomes \\
-        Tybert, et al., Genome Res. Apr 2018, DOI: 10.1101/gr.234096.117
-      \item High-resolution comparative analysis of great ape genomes \\
-        Kronenberg, et al., Science June 2018, DOI: 10.1126/science.aar6343
-      \item Mouse strain genomes project, 16 laboratory and wild-derived strains \\
-        Lilue, et al., accepted
-      \end{itemize}
+    \begin{column}{0.80\textwidth}
+      \begin{tightitemize}
+      \item \paperref{Long-read sequence assembly of the gorilla genome}
+        {Gordon et al.}{Science Apr 2016}{10.1126/science.aae0344}
+      \item \paperref{Repeat associated mechanisms of genome evolution and function revealed by the Mus caroli and Mus pahari genomes}
+        {Tybert, et al.}{Genome Res. Apr 2018}{10.1101/gr.234096.117}
+      \item \paperref{High-resolution comparative analysis of great ape genomes}
+        {Kronenberg, et al.}{Science June 2018}{10.1126/science.aar6343}
+      \item \paperref{Mouse strain genomes project, 16 laboratory and wild-derived strains}
+        {Lilue, et al.}{accepted}{}
+      \item \paperref{Evaluating recovery potential of the northern white rhinoceros from cryopreserved somatic cells}
+        {Tunstal, et al.}{Genome Res. 2018}{10.1101/gr.227603.117}
+      \end{tightitemize}
     \end{column}
-    \begin{column}{0.2\textwidth}
+    \begin{column}{0.20\textwidth}
       \includegraphics[scale=0.2]{images/science-gorilla.jpg}
       \vspace{4em}
       \includegraphics[scale=0.2]{images/science-ape.jpg}
@@ -315,7 +320,7 @@
       \includegraphics[bb=0pt 0pt 429pt 814pt,clip,scale=0.35]{images/tp53-direct-rna-2.pdf}
     \end{column}
   \end{columns}
-\end{frame}
+'\end{frame}
 
 % -----------------------------------------------------------------------------
 \iffalse
