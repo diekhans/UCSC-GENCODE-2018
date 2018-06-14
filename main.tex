@@ -71,7 +71,7 @@
 \titlegraphic{\hfill\includegraphics[height=1.5cm]{images/Genomics_Institute_Logo_Pathed_Text.pdf}}
 \begin{document}
 
- \maketitle
+\maketitle
 
 \begin{frame}{Outline}
   \setbeamertemplate{section in toc}[sections numbered]
@@ -137,28 +137,16 @@
     \begin{itemize}
         \item Sequencing projects are becoming larger and larger as the cost of sequencing continues to fall
         \item Several large projects are aiming to sequence hundreds to thousands of genomes in the coming years
-        \item Aligning at this scale is very difficult---but Cactus was explicitly designed for these very large alignments
+        \item Aligning at this scale is very difficult
+          \begin{tightitemize}
+          \item Cactus was explicitly designed for these very large alignments
+          \end{tightitemize}
         \item Thanks to long-read technology, there are already many more gold-standard assemblies that are worthy of being studied in detail, making reference-free alignments more important
-        \item \emph{The dream}: a single, frequently-updated public resource which relates thousands of vertebrate genomes to one another and allow information/annotation transfer across species, viewable from any genome \begin{itemize}
+        \item \emph{The dream}: a single, frequently-updated public resource which relates thousands of vertebrate genomes to one another and allow information/annotation transfer across species, viewable from any genome
+          \begin{tightitemize}
             \item As a first draft, we plan to create a 600+-way pan-tetrapod alignment combining two large sequencing \& analysis projects we are currently working on
-        \end{itemize}
+        \end{tightitemize}
     \end{itemize}
-\end{frame}
-
-\begin{frame}{200 Mammals}
-  \begin{columns}
-    \begin{column}{0.5\textwidth}
-      \begin{itemize}
-          \item Extending earlier 29 Mammals project: from 29 mammals spanning 4.5 subs/site to 252 mammals with \char`~15 subs/site
-          \item Aligning using Cactus
-          \item Generating 1bp-resolution constrained elements annotations (on human, but also on all other mammals!)
-          \item Generating gene sets for all 252 assemblies using CAT
-      \end{itemize}
-    \end{column}
-    \begin{column}{0.5\textwidth}
-      \adjincludegraphics[trim={{0.2\width} 0 {0.2\width} 0},clip,width=\columnwidth]{images/200_Mammal_Tree.pdf}
-    \end{column}
-  \end{columns}
 \end{frame}
 
 \begin{frame}{Bird 10K}
@@ -180,6 +168,22 @@
     \end{columns}
 \end{frame}
 
+\begin{frame}{200 Mammals}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \begin{itemize}
+          \item Extending earlier 29 Mammals project: from 29 mammals spanning 4.5 subs/site to 252 mammals with \char`~15 subs/site
+          \item Aligning using Cactus
+          \item Generating 1bp-resolution constrained elements annotations (on human, but also on all other mammals!)
+          \item Generating gene sets for all 252 assemblies using CAT
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \adjincludegraphics[trim={{0.2\width} 0 {0.2\width} 0},clip,width=\columnwidth]{images/200_Mammal_Tree.pdf}
+    \end{column}
+  \end{columns}
+\end{frame}
+
 % -----------------------------------------------------------------------------
 \sectionframe{Comparative genomics annotation}
 
@@ -187,15 +191,15 @@
   \begin{itemize}
   \item comparative annotation combining multiple sources of evidence
     \begin{tightitemize}
-    \item start with high-quality gene annotations on related species (GENCODE or Ensembl)
-    \item create Cactus alignments
-    \item project annotations through alignments to target genome
-    \item combine mappings with RNA-Seq and Iso-Seq evidence using AUGUSTUS
-    \item create consensus gene set 
+    \item Start with high-quality gene annotations on related species (GENCODE or Ensembl)
+    \item Create Cactus alignments
+    \item Project annotations through alignments to target genome
+    \item Combine mappings with RNA-Seq and Iso-Seq evidence using AUGUSTUS
+    \item Create consensus gene set 
     \end{tightitemize}
-  \item developed by Ian Fiddes
-  \item ongoing maintenance 
-  \item work with Ensembl gene build group to incorporate useful methodologies
+  \item Developed by Ian Fiddes
+  \item Ongoing maintenance 
+  \item Work with Ensembl gene build group to incorporate useful methodologies
   \end{itemize}
 \blfootnote{Comparative Annotation Toolkit (CAT) - simultaneous clade and personal genome annotation, Fiddes, et al., accepted; pre-print DOI:10.1101/231118}
 \end{frame}
@@ -211,11 +215,11 @@
 
 \begin{frame}{Graph genomes goals}
   \begin{itemize}
-  \item address reference-bias in genome-based analysis
-  \item consistent representation of human variation with at least 1\% penetrance
-  \item stable addressing as new variation is added
-  \item bring newer data to users stuck on older linear reference genome releases
-  \item support annotation of human variation (GENCODE pilot project)
+  \item Address reference-bias in genome-based analysis
+  \item Consistent representation of human variation with at least 1\% penetrance
+  \item Stable addressing as new variation is added
+  \item Bring newer data to users stuck on older linear reference genome releases
+  \item Support annotation of human variation (GENCODE pilot project)
   \end{itemize}
 \end{frame}
 
@@ -225,8 +229,8 @@
     \includegraphics[scale=0.30]{images/graph-genome-inversion.pdf}
   \end{center}
   \begin{itemize}
-  \item set of sequences (nodes)
-  \item joins (edges) connect sides of sequences.
+  \item Set of sequences (nodes)
+  \item Joins (edges) connect sides of sequences.
   \end{itemize}
 \end{frame}
 
@@ -254,17 +258,17 @@
 \sectionframe{Transcript support}
 \begin{frame}{Transcript support goals}
   \begin{itemize}
-  \item evaluate support of GENCODE annotations from current data
+  \item Evaluate support of GENCODE annotations from current data
     \begin{tightitemize}
-    \item assist with annotations
-    \item guide users
+    \item Assist with annotations
+    \item Guide users
     \end{tightitemize}
-  \item full-length support (TSL)
+  \item Full-length support (TSL)
     \begin{tightitemize}
     \item GenBank \& dbEST 
     \item IsoSeq \& nanopore - the next step
     \end{tightitemize}
-  \item intron support (RSL)
+  \item Intron support (RSL)
     \begin{tightitemize}
     \item SRA/ENA open and controlled access RNA-Seq
     \end{tightitemize}
@@ -276,16 +280,16 @@
   \item CZI SRA alignments
     \begin{tightitemize}
     \item 22k human \& 48k mouse experiments
-    \item random selection; many are small sets
-    \item approaching satiation, however many known introns missing
+    \item Random selection; many are small sets
+    \item Approaching satiation, however many known introns missing
     \end{tightitemize}
   \item large SRA cloud run
     \begin{tightitemize}
-    \item delayed by technology on free cloud resources
+    \item Delayed by technology on free cloud resources
     \end{tightitemize}
   \item Array Express collaboration
     \begin{tightitemize}
-    \item a chance to create an ongoing resource
+    \item A chance to create an ongoing resource
     \end{tightitemize}
   \end{itemize}
 \end{frame}
@@ -303,18 +307,18 @@
 
 \begin{frame}{Array Express collaboration}
   \begin{itemize}
-  \item Array Express pipeline maps with TopHat2 and estimates expression
+  \item Array Express pipeline currently maps with TopHat2 and estimates expression
     \begin{tightitemize}
-    \item process incoming RNA-Seq experiments; including controlled access
-    \item doesn't save splice junction calls
+    \item Process incoming RNA-Seq experiments; including controlled access
+    \item Doesn't save splice junction calls
     \end{tightitemize}
-  \item redoing pipeline, most likely with HiSat2
+  \item Redoing pipeline, most likely with HiSat2
   \item UCSC developed at intron caller that is independent of aligner
     \begin{tightitemize}
     \item \url{https://github.com/diekhans/intronProspector}
     \end{tightitemize}
-  \item provides data for all Ensembl assemblies, not just GENCODE
-  \item assist in recompute using Azure cloud
+  \item Provides data for all Ensembl assemblies, not just GENCODE
+  \item UCSC will assist in initial recompute using Azure cloud
   \end{itemize}
 \end{frame}
 
@@ -330,16 +334,17 @@
 
 \begin{frame}{Long-read transcript support}
   \begin{itemize}
-  \item supplement and eventually replace GenBank w Iso-Seq \& Oxford Nanopore
+  \item Supplement and eventually replace GenBank w Iso-Seq \& Oxford Nanopore
     \begin{tightitemize}
-    \item currently a limited number of SRA data sets
+    \item Currently a limited number of SRA data sets
+    \item CRG \& Brooke's lab
     \end{tightitemize}
   \item UCSC Nanopore project and Nanopore WGS Consortium
     \begin{tightitemize}
     \item \url{https://github.com/nanopore-wgs-consortium/NA12878/blob/master/RNA.md}
-    \item direct RNA sequencing
+    \item Direct RNA sequencing
     \item $3^\prime$ complete
-    \item also doing cDNA
+    \item Also doing cDNA
     \end{tightitemize}
   \end{itemize}
 \end{frame}
