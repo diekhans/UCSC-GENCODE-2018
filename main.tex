@@ -127,18 +127,31 @@
       \end{itemize}
     \end{column}
     \begin{column}{0.5\textwidth}
-      \includegraphics[width=\columnwidth]{images/progressive-alignment-and-reconstruction.pdf} \\
+      \includegraphics[width=\columnwidth]{images/progressive-alignment-and-reconstruction-minus-labels.pdf} \\
       \includegraphics[width=\columnwidth]{images/reference-free-diagram.pdf}
     \end{column}
   \end{columns}
+\end{frame}
+
+\begin{frame}{Cactus enables very-large-scale comparative genomics}
+    \begin{itemize}
+        \item Sequencing projects are becoming larger and larger as the cost of sequencing continues to fall
+        \item Several large projects are aiming to sequence hundreds to thousands of genomes in the coming years
+        \item Aligning at this scale is very difficult---but Cactus was explicitly designed for these very large alignments
+        \item Thanks to long-read technology, there are already many more gold-standard assemblies that are worthy of being studied in detail, making reference-free alignments more important
+        \item \emph{The dream}: a single, frequently-updated public resource which relates thousands of vertebrate genomes to one another and allow information/annotation transfer across species, viewable from any genome \begin{itemize}
+            \item As a first draft, we plan to create a 600+-way pan-tetrapod alignment combining two large sequencing \& analysis projects we are currently working on
+        \end{itemize}
+    \end{itemize}
 \end{frame}
 
 \begin{frame}{200 Mammals}
   \begin{columns}
     \begin{column}{0.5\textwidth}
       \begin{itemize}
-          \item Extending earlier 29 Mammals project: from 29 mammals with 4.5 subs/site to 252 mammals with \char`~15 subs/site
-          \item Generating 1bp-resolution constrained elements annotations
+          \item Extending earlier 29 Mammals project: from 29 mammals spanning 4.5 subs/site to 252 mammals with \char`~15 subs/site
+          \item Aligning using Cactus
+          \item Generating 1bp-resolution constrained elements annotations (on human, but also on all other mammals!)
           \item Generating gene sets for all 252 assemblies using CAT
       \end{itemize}
     \end{column}
@@ -146,6 +159,25 @@
       \adjincludegraphics[trim={{0.2\width} 0 {0.2\width} 0},clip,width=\columnwidth]{images/200_Mammal_Tree.pdf}
     \end{column}
   \end{columns}
+\end{frame}
+
+\begin{frame}{Bird 10K}
+    \begin{columns}
+        \begin{column}{0.5\textwidth}
+            \includegraphics[width=\columnwidth]{images/B10K_tree.jpg}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \begin{itemize}
+                \item Ambitious sequencing project in multiple years-long phases: \begin{itemize}
+                    \item Phase 1: sequence 48 birds (one species from every order)
+                    \item \textbf{Phase 2: sequence 300 birds (one species from every family)}
+                    \item Phases 3 and 4: all the rest! (\char`~9600)
+                \end{itemize}
+                \item How to enable analysis of this massive dataset without reference bias? Cactus!
+                \item Large analysis project with many goals, but primarily to gain more insight about the species tree of birds
+            \end{itemize}
+        \end{column}
+    \end{columns}
 \end{frame}
 
 % -----------------------------------------------------------------------------
@@ -163,7 +195,7 @@
     \end{tightitemize}
   \item developed by Ian Fiddes
   \item ongoing maintenance 
-  \item work with Ensemble gene build group to incorporate useful methodologies
+  \item work with Ensembl gene build group to incorporate useful methodologies
   \end{itemize}
 \blfootnote{Comparative Annotation Toolkit (CAT) - simultaneous clade and personal genome annotation, Fiddes, et al., accepted; pre-print DOI:10.1101/231118}
 \end{frame}
