@@ -9,7 +9,7 @@ CRAM = "CRAM"
 CRAM2 = "CRAM2"
 SJ_CALLS = "SJ calls"
 ENA = "ENA"
-ARRAY_EXPRESS  = "ArrayExpress"
+EXPR_ATLAS  = "Expression Atlas"
 HISAT2 = "hisat2"
 SAM_TOOLS = "samtools"
 SJ_CALLER = "intron\\nprospector"
@@ -74,7 +74,7 @@ def aeInternalCalling(graph):
     mkArrow(graph, FASTQ, ENA)
     mkEna(graph, ENA)
     mkArrow(graph, ENA, HISAT2)
-    with cluster(graph, ARRAY_EXPRESS, label=ARRAY_EXPRESS, invisible=False) as aeGraph:
+    with cluster(graph, EXPR_ATLAS, label=EXPR_ATLAS, invisible=False) as aeGraph:
         mkHisat2(aeGraph, HISAT2)
         mkArrow(aeGraph, HISAT2, SJ_CALLER)
         mkSjCaller(aeGraph, SJ_CALLER)
@@ -91,7 +91,7 @@ def aeExternalCalling(graph):
     mkArrow(graph, FASTQ, ENA)
     mkEna(graph, ENA)
     mkArrow(graph, ENA, HISAT2)
-    with cluster(graph, ARRAY_EXPRESS, label=ARRAY_EXPRESS, invisible=False) as aeGraph:
+    with cluster(graph, EXPR_ATLAS, label=EXPR_ATLAS, invisible=False) as aeGraph:
         mkHisat2(aeGraph, HISAT2)
         mkArrow(aeGraph, HISAT2, SAM_TOOLS)
         mkSamTools(aeGraph, SAM_TOOLS)
@@ -128,14 +128,14 @@ def renderGraph(graph, fname, fmt):
         subprocess.run(["epstopdf", fname + ".ps2", "-o", fname + ".pdf"], check=True)
 
 def buildInternalCalling(fmt, size=None):
-    fname = "calling_at_array_express"
-    graph = initGraph("Junction calling at ArrayExpress", fmt, size)
+    fname = "calling_at_expression_atlas"
+    graph = initGraph("Junction calling at Expression Atlas", fmt, size)
     aeInternalCalling(graph)
     renderGraph(graph, fname, fmt)
 
 def buildExternalCalling(fmt, size=None):
     fname = "calling_external"
-    graph = initGraph("Junction calling outside of ArrayExpress", fmt, size)
+    graph = initGraph("Junction calling outside of Expression Atlas", fmt, size)
     aeExternalCalling(graph)
     renderGraph(graph, fname, fmt)
 
