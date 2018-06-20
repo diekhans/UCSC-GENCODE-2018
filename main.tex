@@ -97,10 +97,10 @@
       \begin{tightitemize}
       \item \paperref{Long-read sequence assembly of the gorilla genome}
         {Gordon et al.}{Science Apr 2016}{10.1126/science.aae0344}
-      \item \paperref{Repeat associated mechanisms of genome evolution and function revealed by the Mus caroli and Mus pahari genomes}
-        {Tybert, et al.}{Genome Res. Apr 2018}{10.1101/gr.234096.117}
       \item \paperref{High-resolution comparative analysis of great ape genomes}
         {Kronenberg, et al.}{Science June 2018}{10.1126/science.aar6343}
+      \item \paperref{Repeat associated mechanisms of genome evolution and function revealed by the Mus caroli and Mus pahari genomes}
+        {Tybert, et al.}{Genome Res. Apr 2018}{10.1101/gr.234096.117}
       \item \paperref{Mouse strain genomes project, 16 laboratory and wild-derived strains}
         {Lilue, et al.}{accepted}{}
       \item \paperref{Evaluating recovery potential of the northern white rhinoceros from cryopreserved somatic cells}
@@ -159,7 +159,7 @@
             \begin{itemize}
                 \item Ambitious sequencing project in multiple years-long phases: \begin{itemize}
                     \item Phase 1: sequence 48 birds (one species from every order)
-                    \item \textbf{Phase 2: sequence 300 birds (one species from every family)}
+                    \item \textbf{\textcolor{DarkGreen}{Phase 2: sequence 300 birds (one species from every family)}}
                     \item Phases 3 and 4: all the rest! (\char`~9600)
                 \end{itemize}
                 \item How to enable analysis of this massive dataset without reference bias? Cactus!
@@ -190,7 +190,7 @@
 
 \begin{frame}{Comparative Annotation Toolkit (CAT)}
   \begin{itemize}
-  \item comparative annotation combining multiple sources of evidence
+  \item Comparative annotation combining multiple sources of evidence
     \begin{tightitemize}
     \item Start with high-quality gene annotations on related species (GENCODE or Ensembl)
     \item Create Cactus alignments
@@ -245,7 +245,7 @@
     \only<1>{\includegraphics[scale=0.32]{images/graph-genome-mhc.png}}
     \only<2>{\includegraphics[scale=0.40]{images/graph-genome-local-structure.png}}
     \end{center}
-  \blfootnote{The major histocompatibility complex− Kiran Garimella \& Gil McVean}
+  \blfootnote{The major histocompatibility complex - Kiran Garimella \& Gil McVean}
 \end{frame}
 
 \begin{frame}{Haplotypes are paths through a graph genome}
@@ -283,15 +283,15 @@
 
 \begin{frame}{RNA-Seq intron support approaches}
   \begin{itemize}
+  \item Large SRA cloud run
+    \begin{tightitemize}
+    \item Delayed by technology on free cloud resources
+    \end{tightitemize}
   \item CZI SRA alignments
     \begin{tightitemize}
     \item 22k human \& 48k mouse experiments
     \item Random selection; many are small sets
     \item Approaching satiation, however many known introns missing
-    \end{tightitemize}
-  \item large SRA cloud run
-    \begin{tightitemize}
-    \item Delayed by technology on free cloud resources
     \end{tightitemize}
   \item EBI Gene Expression Team collaboration
     \begin{tightitemize}
@@ -300,7 +300,7 @@
   \end{itemize}
 \end{frame}
 
-\begin{frame}{CZI set experiment saturation for annotated introns}
+\begin{frame}<presentation:0>{CZI set experiment saturation for annotated introns}
   \begin{columns}
     \begin{column}{0.5\textwidth}
       \includegraphics[scale=0.37]{images/hs_saturation_annot.pdf}
@@ -318,13 +318,13 @@
     \item Process incoming RNA-Seq experiments; including controlled access
     \item Doesn't save splice junction calls
     \end{tightitemize}
-  \item Redoing pipeline, most likely with HiSat2
+  \item Redoing pipeline, most likely with {\em HISAT2}
   \item UCSC developed at intron caller that is independent of aligner
     \begin{tightitemize}
     \item \url{https://github.com/diekhans/intronProspector}
     \end{tightitemize}
   \item Provides data for all Ensembl assemblies, not just GENCODE
-  \item UCSC will assist in initial recompute using Azure cloud
+  \item UCSC will assist in initial recompute mouse using Azure cloud
   \end{itemize}
 \end{frame}
 
