@@ -64,9 +64,10 @@
     Mark Diekhans \href{mailto:markd@ucsc.edu}{\textless markd@ucsc.edu\textgreater} \\
     Joel Armstrong \href{mailto:jcarmstr@ucsc.edu}{\textless jcarmstr@ucsc.edu\textgreater} \\
     Benedict Paten \href{mailto:bpaten@ucsc.edu}{\textless bpaten@ucsc.edu\textgreater} \\
-    Adam Novak (graph genomes) \\
-    Mark Akeson, Miten Jain (nanopore) \\
-    Ian Fiddes, Stefanie Nachtweide (emeritus) \\
+    Adam Novak (Graph genomes) \\
+    Mark Akeson, Miten Jain, Angela Brookes (UCSC Nanopore) \\
+    Mario Stanke (University of Greifswald) \\
+    Ian Fiddes, Stefanie Nachtweide (Emeritus) \\
 }
 
 \titlegraphic{\hfill\includegraphics[height=1.5cm]{images/Genomics_Institute_Logo_Pathed_Text.pdf}}
@@ -225,6 +226,9 @@
   \item Consistent representation of human variation with at least 1\% penetrance
   \item Stable addressing as new variation is added
   \item Bring newer data to users stuck on older linear reference genome releases
+    \begin{tightitemize}
+    \item GRCh37 \& GRCh38 are paths through the graph
+    \end{tightitemize}
   \item Support annotation of human variation (GENCODE pilot project)
   \end{itemize}
 \end{frame}
@@ -264,15 +268,16 @@
 \sectionframe{Transcript support}
 \begin{frame}{Transcript support goals}
   \begin{itemize}
-  \item Evaluate support of GENCODE annotations from current data
+  \item Ongoing evaluation of GENCODE annotations from current data
     \begin{tightitemize}
+    \item High-throughput, automated scoring
     \item Assist with annotations
     \item Guide users
     \end{tightitemize}
   \item Full-length support (TSL)
     \begin{tightitemize}
     \item GenBank \& dbEST 
-    \item IsoSeq \& nanopore - the next step
+    \item PacBio IsoSeq \& Oxford Nanopore - the next step
     \end{tightitemize}
   \item Intron support (RSL)
     \begin{tightitemize}
@@ -343,7 +348,7 @@
   \item Supplement and eventually replace GenBank w Iso-Seq \& Oxford Nanopore
     \begin{tightitemize}
     \item Currently a limited number of SRA data sets
-    \item CRG \& Brooke's lab
+    \item CGG, ENCODE
     \item Other sources? 
     \end{tightitemize}
   \item UCSC Nanopore project and Nanopore WGS Consortium
@@ -351,7 +356,7 @@
     \item \url{https://github.com/nanopore-wgs-consortium/NA12878/blob/master/RNA.md}
     \item Direct RNA sequencing
     \item $3^\prime$ complete
-    \item Also doing cDNA
+    \item PromethION - 10 million full-length poly(A) reads per run
     \end{tightitemize}
   \end{itemize}
 \end{frame}
